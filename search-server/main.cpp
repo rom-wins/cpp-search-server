@@ -65,48 +65,14 @@ public:
     }
 
     vector<Document> FindTopDocuments(const string& raw_query) const {
-        const Query query = ParseQuery(raw_query);
-        auto matched_documents = FindAllDocuments(query,
-                                                  [](int document_id, DocumentStatus status, int rating){
-                                                      return status == DocumentStatus::ACTUAL;
-                                                  });
-
-
-        sort(matched_documents.begin(), matched_documents.end(),
-             [](const Document& lhs, const Document& rhs) {
-                 if (abs(lhs.relevance - rhs.relevance) < 1e-6) {
-                     return lhs.rating > rhs.rating;
-                 } else {
-                     return lhs.relevance > rhs.relevance;
-                 }
-             });
-        if (matched_documents.size() > MAX_RESULT_DOCUMENT_COUNT) {
-            matched_documents.resize(MAX_RESULT_DOCUMENT_COUNT);
-        }
-        return matched_documents;
+        return FindTopDocuments(raw_query, DocumentStatus::ACTUAL);
     }
 
     vector<Document> FindTopDocuments(const string& raw_query, DocumentStatus document_status_value) const {
-        const Query query = ParseQuery(raw_query);
-        auto matched_documents = FindAllDocuments(query,
-                                                  [&document_status_value](int document_id,
-                                                                           DocumentStatus status,
-                                                                           int rating){
-                                                      return document_status_value == status;
-                                                  });
-
-        sort(matched_documents.begin(), matched_documents.end(),
-             [](const Document& lhs, const Document& rhs) {
-                 if (abs(lhs.relevance - rhs.relevance) < 1e-6) {
-                     return lhs.rating > rhs.rating;
-                 } else {
-                     return lhs.relevance > rhs.relevance;
-                 }
-             });
-        if (matched_documents.size() > MAX_RESULT_DOCUMENT_COUNT) {
-            matched_documents.resize(MAX_RESULT_DOCUMENT_COUNT);
-        }
-        return matched_documents;
+        return FindTopDocuments(raw_query,
+                                [&document_status_value](int document_id, DocumentStatus status, int rating){
+                                    return status == document_status_value;
+        });
     }
 
     template<typename DocumentPredicate>
@@ -246,7 +212,7 @@ private:
             }
             const double inverse_document_freq = ComputeWordInverseDocumentFreq(word);
             for (const auto [document_id, term_freq] : word_to_document_freqs_.at(word)) {
-                DocumentData document = documents_.at(document_id);
+                const DocumentData& document = documents_.at(document_id);
                 if (document_predicate(document_id, document.status, document.rating)) {
                     document_to_relevance[document_id] += term_freq * inverse_document_freq;
                 }
