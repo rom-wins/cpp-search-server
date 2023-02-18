@@ -9,7 +9,7 @@
 
 using namespace std;
 
-
+constexpr double RELEVANCE_ERROR = 1e-6;
 const int MAX_RESULT_DOCUMENT_COUNT = 5;
 
 struct Document {
@@ -72,7 +72,7 @@ public:
     vector<Document> FindTopDocuments(const string& raw_query, DocumentStatus document_status_value) const {
         return FindTopDocuments(raw_query,
                                 [&document_status_value]([[maybe_unused]]int document_id,
-                                        DocumentStatus status, [[maybe_unused]] int rating){
+                                                         DocumentStatus status, [[maybe_unused]] int rating){
                                     return status == document_status_value;
                                 });
     }
@@ -84,7 +84,7 @@ public:
 
         sort(matched_documents.begin(), matched_documents.end(),
              [](const Document& lhs, const Document& rhs) {
-                 if (abs(lhs.relevance - rhs.relevance) < 1e-6) {
+                 if (abs(lhs.relevance - rhs.relevance) < RELEVANCE_ERROR) {
                      return lhs.rating > rhs.rating;
                  } else {
                      return lhs.relevance > rhs.relevance;
@@ -417,14 +417,12 @@ void TestMatchDocument() {
         server.AddDocument(doc_id, content, status, ratings);
         const auto& matched_docs = server.MatchDocument(dont_match_query, doc_id);
         ASSERT_HINT(get<0>(matched_docs).empty(),
-                     "Вектор слов после матчинга должен быть пустым, так как запрос не содержит слов из документа"s);
+                    "Вектор слов после матчинга должен быть пустым, так как запрос не содержит слов из документа"s);
     }
 }
 
 // Тест для сортировки найденных документов по релевантности
 void TestSortingByRelevance() {
-
-    const double eps = 1e-10;
 
     // Убеждаемся что результат поиска топа документов отсортирован по убыванию
     {
@@ -438,7 +436,7 @@ void TestSortingByRelevance() {
 
         for (int i = 0; i < top_docs.size()-1; ++i)
         {
-            ASSERT_HINT(abs(top_docs[i].relevance - top_docs[i+1].relevance) >= eps,
+            ASSERT_HINT(top_docs[i].relevance - top_docs[i+1].relevance >= RELEVANCE_ERROR,
                         "Результат поискового запроса не отсортирован по убыванию");
         }
     }
@@ -604,6 +602,60 @@ void TestAnyPredicates() {
     }
 }
 
+// Тестирование правильности расчёта релеватности
+void TestRelevanceValueIsCorrect()
+{
+    const DocumentStatus status = DocumentStatus::ACTUAL;
+    const vector<int> rating = {
+            {1, 2, 3, 4, 5},
+    };
+    const string& content1 = "cat with big furry tail"s;
+    const string& content2 = "little dog without collar"s;
+
+    SearchServer server;
+    server.AddDocument(1, content1, status, rating);
+    server.AddDocument(2, content2, status, rating);
+
+
+    // Запрос в точности совпадает с документом 1 -> релеватность == 5 * 0.2 * log(2)
+    {
+        const string& query = content1;
+        const double target_relevance = 5 * 0.2 * log(2);
+
+        const auto& top_docs = server.FindTopDocuments(query);
+
+        ASSERT_HINT(abs(top_docs[0].relevance - target_relevance) <= RELEVANCE_ERROR,
+               "Релевантность вычислена не верно для запроса полностью совпадающего с документом"s);
+    }
+
+    // В запросе нет слов из документов -> relevance == 0
+    {
+        const string& query = "22 33 45 4532"s;
+
+        const auto& top_docs = server.FindTopDocuments(query);
+
+        ASSERT_HINT(top_docs.empty(),
+                    "Релевантность вычислена не верно для запроса, слова которого не содержатся в документе"s);
+    }
+
+
+    // В запросе имеются некоторые слова из документов -> 0 < relevance < 1
+    {
+        const string& query = "little dog with tail"s;
+        const double target_relevance_doc_1 = log(2) * 2 * 0.25;
+        const double target_relevance_doc_2 = log(2) * 2 * 0.2;
+
+        const auto& top_docs = server.FindTopDocuments(query);
+
+
+        ASSERT_HINT(abs(top_docs[0].relevance - target_relevance_doc_1) <= RELEVANCE_ERROR,
+                    "Релевантность вычислена не верно для запроса, некоторые слова которого содержатся в документе"s);
+
+        ASSERT_HINT(abs(top_docs[1].relevance - target_relevance_doc_2) <= RELEVANCE_ERROR,
+                    "Релевантность вычислена не верно для запроса, некоторые слова которого содержатся в документе"s);
+    }
+}
+
 
 // Функция TestSearchServer является точкой входа для запуска тестов
 void TestSearchServer() {
@@ -615,6 +667,7 @@ void TestSearchServer() {
     RUN_TEST(TestStatusPredicate);
     RUN_TEST(TestAverageRating);
     RUN_TEST(TestAnyPredicates);
+    RUN_TEST(TestRelevanceValueIsCorrect);
 }
 
 
