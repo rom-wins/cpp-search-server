@@ -84,7 +84,7 @@ public:
     template <typename StringContainer>
     explicit SearchServer(const StringContainer& stop_words)
             : stop_words_(MakeUniqueNonEmptyStrings(stop_words)) {
-                for (const string& word : MakeUniqueNonEmptyStrings(stop_words)){
+                for (const string& word : stop_words_){
                     if (!IsValidWord(word))
                     {
                         throw invalid_argument("Одно из стоп-слов содержит спецсимволы"s);
@@ -113,19 +113,12 @@ public:
 
         const vector<string> words = SplitIntoWordsNoStop(document);
 
-        for (const auto& word : words )
-        {
-            if (!IsValidWord(word))
-            {
-                throw invalid_argument("Документ не должен содержать спецсимволы"s);
-            }
-        }
-
         const double inv_word_count = 1.0 / static_cast<int>(words.size());
         for (const string& word : words) {
             word_to_document_freqs_[word][document_id] += inv_word_count;
         }
-        documents_.emplace(document_id, DocumentData{ComputeAverageRating(ratings), status, GetDocumentCount()});
+        documents_.emplace(document_id, DocumentData{ComputeAverageRating(ratings), status});
+        doc_idx_to_doc_id_[GetDocumentCount()] = document_id;
     }
 
     template <typename DocumentPredicate>
@@ -155,6 +148,7 @@ public:
                     return document_status == status;
                 });
     }
+
     vector<Document> FindTopDocuments(const string& raw_query) const {
         return FindTopDocuments(raw_query, DocumentStatus::ACTUAL);
     }
@@ -187,37 +181,27 @@ public:
             }
         }
 
-        return make_tuple(matched_words, documents_.at(document_id).status);
-
+        return {matched_words, documents_.at(document_id).status};
     }
 
     int GetDocumentId(int index) const {
         if (index > -1 && index < GetDocumentCount())
         {
-            for (const auto& [doc_id, doc_data] : documents_)
-            {
-                if (doc_data.number == index)
-                {
-                    return doc_id;
-                }
-            }
+            return doc_idx_to_doc_id_.at(index);            
         }
-        else {
-            throw out_of_range("Индекс документа вне допустимого диапазона"s); 
-        }
-
-        return INVALID_DOCUMENT_ID;
+        throw out_of_range("Индекс документа вне допустимого диапазона"s);
     }
 
 private:
     struct DocumentData {
         int rating;
         DocumentStatus status;
-        int number;
     };
-const set<string> stop_words_;
+    const set<string> stop_words_;
+
     map<string, map<int, double>> word_to_document_freqs_;
     map<int, DocumentData> documents_;
+    map<int, int> doc_idx_to_doc_id_;
 
     bool IsStopWord(const string& word) const {
         return stop_words_.count(word) > 0;
@@ -234,6 +218,11 @@ const set<string> stop_words_;
             if (!IsStopWord(word)) {
                 words.push_back(word);
             }
+            if (!IsValidWord(word))
+            {
+                throw invalid_argument("Документ не должен содержать спецсимволы"s);
+            }
+
         }
         return words;
     }
