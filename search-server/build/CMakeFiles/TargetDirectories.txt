@@ -1,0 +1,3 @@
+/home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/build/CMakeFiles/main.dir
+/home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/build/CMakeFiles/edit_cache.dir
+/home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/build/CMakeFiles/rebuild_cache.dir
