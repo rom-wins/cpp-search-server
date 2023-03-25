@@ -46,7 +46,8 @@ std::ostream& operator<<(std::ostream& out, const IteratorRange<Iterator> iterat
 template <typename Iterator>
 class Paginator{
 public:
-    Paginator(Iterator beg, Iterator end, int page_size){
+    Paginator(Iterator beg, Iterator end, int page_size)
+    {
         if (page_size <= 0)
         {
             throw std::invalid_argument("Размер страницы должен быть положительным"s);
@@ -69,7 +70,8 @@ public:
         
     }
 
-    auto size() const {
+    auto size() const 
+    {
         return pages_.size();
     }
 

@@ -25,7 +25,7 @@ void RequestQueue::RemoveOld()
 {
     if (requests_.size() > min_in_day_)
     {
-        if (requests_.front().docs.empty())
+        if (requests_.front().count_of_results == 0)
         {
             --no_result_requests;
         }

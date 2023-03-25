@@ -10,21 +10,7 @@ public:
     explicit RequestQueue(const SearchServer& search_server);
 
     template <typename DocumentPredicate>
-    std::vector<Document> AddFindRequest(const std::string& raw_query, DocumentPredicate document_predicate)
-    {
-        const auto search_result = search_server_->FindTopDocuments(raw_query, document_predicate);
-        
-        requests_.push_back({search_result});
-        
-        if (search_result.empty())
-        {
-            ++no_result_requests;
-        }
-        
-        RemoveOld();
-        
-        return search_result;
-    }
+    std::vector<Document> AddFindRequest(const std::string& raw_query, DocumentPredicate document_predicate);
     
     std::vector<Document> AddFindRequest(const std::string& raw_query, DocumentStatus status) ;
     
@@ -33,7 +19,7 @@ public:
     int GetNoResultRequests() const ;
 private:
     struct QueryResult {
-        std::vector<Document> docs;
+        uint64_t count_of_results;
     };
 
     std::deque<QueryResult> requests_;
@@ -43,4 +29,21 @@ private:
 
     void RemoveOld();
 };
+
+template <typename DocumentPredicate>
+std::vector<Document> RequestQueue::AddFindRequest(const std::string& raw_query, DocumentPredicate document_predicate)
+{
+    const auto search_result = search_server_->FindTopDocuments(raw_query, document_predicate);
+        
+    requests_.push_back({search_result.size()});
+        
+    if (search_result.empty())
+    {
+        ++no_result_requests;
+    }
+        
+    RemoveOld();
+
+    return search_result;
+}
 
