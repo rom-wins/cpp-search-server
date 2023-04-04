@@ -1,9 +1,13 @@
 #include <iostream>
 #include "../include/test_example_functions.h"
+#include "../include/log_duration.h"
 
 using namespace std;
 
+
 int main() {
+    {
+    LOG_DURATION_STREAM("Long task"s, cout);
     
     cout << "---------------- Класс SearchServer: начало тестов ----------------"s << endl;
     TestSearchServer();
@@ -20,8 +24,10 @@ int main() {
     TestRequestQueue();
     cout << "----------- Класс RequestQueue: тесты пройдены успешно ------------"s << endl;
     cout << endl;
-    
+    }
 
     cout << "All tests were successful!"s << endl;
     return 0;
 }
+
+

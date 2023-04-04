@@ -1,4 +1,5 @@
 #include <numeric>
+#include <stdexcept>
 #include "../include/search_server.h"
 
 using namespace std;
@@ -10,7 +11,7 @@ void SearchServer::AddDocument(int document_id,
                                 const string& document, 
                                 DocumentStatus status, 
                                 const vector<int>& ratings) {
-        
+    
     if (document_id < 0)
     {
         throw invalid_argument("ID документа должен быть положительным"s);
@@ -22,13 +23,18 @@ void SearchServer::AddDocument(int document_id,
     }
 
     const vector<string> words = SplitIntoWordsNoStop(document);
+    map<string, double> words_freeqs;
 
     const double inv_word_count = 1.0 / static_cast<int>(words.size());
     for (const string& word : words) {
         word_to_document_freqs_[word][document_id] += inv_word_count;
+        words_freeqs[word] += inv_word_count;
     }
+
     documents_.emplace(document_id, DocumentData{ComputeAverageRating(ratings), status});
-    doc_idx_to_doc_id_[GetDocumentCount()] = document_id;
+    doc_ids_.insert(document_id);
+    
+    doc_to_words_freeqs_[document_id] = words_freeqs;
 }
 
 vector<Document> SearchServer::FindTopDocuments(const string& raw_query, 
@@ -72,15 +78,6 @@ tuple<vector<string>, DocumentStatus> SearchServer::MatchDocument(const string& 
     }
 
     return {matched_words, documents_.at(document_id).status};
-}
-
-int SearchServer::GetDocumentId(int index) const {
-    if (index > -1 && index < GetDocumentCount())
-    {
-        return doc_idx_to_doc_id_.at(index);            
-    }
-    
-    throw out_of_range("Индекс документа вне допустимого диапазона"s);
 }
 
 
@@ -161,3 +158,30 @@ SearchServer::Query SearchServer::ParseQuery(const string& text) const {
 double SearchServer::ComputeWordInverseDocumentFreq(const string& word) const {
     return log(GetDocumentCount() * 1.0 / word_to_document_freqs_.at(word).size());
 }
+
+const map<string, double>& SearchServer::GetWordFrequencies(int document_id) const {
+
+    if (doc_to_words_freeqs_.count(document_id) > 0)
+    {
+        return doc_to_words_freeqs_.at(document_id);
+    }
+    return {};
+}
+
+void SearchServer::RemoveDocument(int document_id)
+{
+    if (doc_ids_.count(document_id) < 1)
+    {
+        throw invalid_argument("Документа с таким id не существует.");
+    }
+
+    for (auto& [word, _] : doc_to_words_freeqs_.at(document_id))
+    {
+        word_to_document_freqs_.at(word).erase(document_id);
+    }
+
+    documents_.erase(document_id);
+    doc_to_words_freeqs_.erase(document_id); 
+    doc_ids_.erase(document_id);
+}
+ 

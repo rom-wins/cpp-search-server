@@ -48,6 +48,20 @@ public:
                                                                         int document_id) const;
     int GetDocumentId(int index) const;
 
+    const std::map<std::string, double>& GetWordFrequencies(int document_id) const;
+    
+    void RemoveDocument(int document_id); 
+    
+    auto begin() const
+    {
+        return doc_ids_.begin();
+    }
+
+    auto end() const
+    {
+        return doc_ids_.end();
+    }
+
 private:
     struct DocumentData {
         int rating;
@@ -55,10 +69,13 @@ private:
     };
 
     const std::set<std::string> stop_words_;
+    
+    std::set<int> doc_ids_;
+    
+    std::map<int, std::map<std::string, double>> doc_to_words_freeqs_;
 
     std::map<std::string, std::map<int, double>> word_to_document_freqs_;
     std::map<int, DocumentData> documents_;
-    std::map<int, int> doc_idx_to_doc_id_;
 
     bool IsStopWord(const std::string& word) const;
 

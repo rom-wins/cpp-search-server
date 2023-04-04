@@ -80,8 +80,14 @@ void TestAnyPredicates();
 // Тестирование правильности расчёта релеватности
 void TestRelevanceValueIsCorrect();
 
+// Тестирование правильности удаления документа
+void TestRemoveDocument();
+
 // Функция TestSearchServer является точкой входа для запуска тестов
 void TestSearchServer();
+
+// Тестирование функции удаления дубликатов из SearchServer
+void TestDuplicates();
 
 // --------- Окончание модульных тестов поисковой системы -----------
 

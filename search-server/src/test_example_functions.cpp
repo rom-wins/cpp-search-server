@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <cmath>
 #include <string>
 #include <numeric>
@@ -6,6 +7,7 @@
 #include "../include/test_example_functions.h"
 #include "../include/search_server.h"
 #include "../include/request_queue.h"
+#include "../include/remove_duplicates.h"
 #include "../include/paginator.h"
 
 using namespace std;
@@ -401,6 +403,68 @@ void TestRelevanceValueIsCorrect()
 }
 
 
+// Тестирование правильности удаления документов
+void TestRemoveDocument()
+{
+    const DocumentStatus status = DocumentStatus::ACTUAL;
+    const vector<int> rating = {
+            {1, 2},
+    };
+    const string& content1 = "cat with big furry tail"s;
+    const string& content2 = "little dog without collar"s;
+
+    SearchServer server(""s);
+    server.AddDocument(1, content1, status, rating);
+    server.AddDocument(2, content2, status, rating);
+    
+
+    server.RemoveDocument(2);
+    
+    ASSERT_EQUAL_HINT(server.GetDocumentCount(), 1, "Количество документов после удаления не соответсвует."s);
+    ASSERT_HINT(count(server.begin(), server.end(), 1) > 0, "После удаления документа был удалён другой"s);
+}
+
+// Тестирование функции удаления дубликатов
+void TestRemoveDuplicates()
+{
+    SearchServer search_server("and with"s);
+    DocumentStatus status = DocumentStatus::ACTUAL;
+    vector<int> rating {7, 2, 7};
+
+    search_server.AddDocument(1, "funny pet and nasty rat"s, status, rating);
+    search_server.AddDocument(2, "funny pet with curly hair"s, status, rating);
+
+    // дубликат документа 2, будет удалён
+    search_server.AddDocument(3, "funny pet with curly hair"s, status, rating);
+    
+    // отличие только в стоп-словах, считаем дубликатом
+    search_server.AddDocument(4, "funny pet and curly hair"s, status, rating);
+
+    // множество слов такое же, считаем дубликатом документа 1
+    search_server.AddDocument(5, "funny funny pet and nasty nasty rat"s, status, rating);
+
+    // добавились новые слова, дубликатом не является
+    search_server.AddDocument(6, "funny pet and not very nasty rat"s, status, rating);
+
+    // множество слов такое же, как в id 6, несмотря на другой порядок, считаем дубликатом
+    search_server.AddDocument(7, "very nasty rat and not very funny pet"s, status, rating);
+
+    // есть не все слова, не является дубликатом
+    search_server.AddDocument(8, "pet with rat and rat and rat"s, status, rating);
+
+    // слова из разных документов, не является дубликатом
+    search_server.AddDocument(9, "nasty rat with curly hair"s, status, rating);
+    
+    set<int> duplicates {3, 4, 5, 7};
+    RemoveDuplicates(search_server);
+
+    for (auto it = search_server.begin(); it != search_server.end(); ++it)
+    {
+        ASSERT_HINT(duplicates.count(*it) < 1, "Дублирующийся документ c id " + to_string(*it) + " не был удалён"s);            
+    }
+}
+
+
 // Функция TestSearchServer является точкой входа для запуска тестов
 void TestSearchServer() {
     RUN_TEST(TestAddDocument);
@@ -411,7 +475,8 @@ void TestSearchServer() {
     RUN_TEST(TestStatusPredicate);
     RUN_TEST(TestAverageRating);
     RUN_TEST(TestAnyPredicates);
-    RUN_TEST(TestRelevanceValueIsCorrect);
+    RUN_TEST(TestRemoveDocument);
+    RUN_TEST(TestRemoveDuplicates);
 }
 
 // --------- Окончание модульных тестов поисковой системы -----------
