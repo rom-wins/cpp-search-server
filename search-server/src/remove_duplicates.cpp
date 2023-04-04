@@ -4,40 +4,40 @@
 using namespace std;
 
 void RemoveDuplicates(SearchServer& search_server) {
-    vector<int> all_doc_ids(search_server.begin(), search_server.end());
 
-    map<string, set<int>> word_to_docs;
+    set<int> ids_to_del;
+    set<set<string>> uniq_words_by_docs;
+    set<string> all_words;
 
-    map<int, int> doc_id_to_count_words;
-
-    for (int doc_id : all_doc_ids)
+    for (auto doc_id_it = search_server.begin(); doc_id_it != search_server.end(); ++doc_id_it)
     {
-        map<string, double> words_freqs = search_server.GetWordFrequencies(doc_id);
-        doc_id_to_count_words[doc_id] = words_freqs.size();
-        
-        map<int, int> doc_to_count_match_words;
-
+        auto words_freqs = search_server.GetWordFrequencies(*doc_id_it);
+        set<string> uniq_words;
         for (const auto& [word, _] : words_freqs)
         {
-            if(word_to_docs.count(word) > 0)
+            if(all_words.count(word) > 0)
             {
-                for (auto idid : word_to_docs.at(word))
-                {
-                    doc_to_count_match_words[idid]++;
-                }
+                uniq_words.emplace(word);
             }
-            word_to_docs[word].emplace(doc_id);
+            else
+            {
+                all_words.emplace(word);
+            }
         }
-
-        for (const auto& [id, count] : doc_to_count_match_words)
+        
+        if (!uniq_words.empty() || uniq_words_by_docs.count(uniq_words) > 0)
         {
-            if (doc_id_to_count_words.at(id) == words_freqs.size() && count == words_freqs.size())
-            {
-                cout << "Found duplicate document id "s << doc_id << endl; 
-                search_server.RemoveDocument(max(doc_id, id));
-                break;
-            }
+            ids_to_del.emplace(*doc_id_it);
         }
+        else
+        {
+            uniq_words_by_docs.emplace(uniq_words);
+        }
+    }
+    for (int doc_id : ids_to_del)
+    {
+        cout << "Found duplicate document id "s << doc_id << endl; 
+        search_server.RemoveDocument(doc_id);
     }
 }
 

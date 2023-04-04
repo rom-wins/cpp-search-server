@@ -15,13 +15,6 @@ using namespace std::string_literals;
 constexpr double RELEVANCE_ERROR = 1e-6;
 const int MAX_RESULT_DOCUMENT_COUNT = 5;
 
-enum class DocumentStatus {
-    ACTUAL,
-    IRRELEVANT,
-    BANNED,
-    REMOVED,
-};
-
 class SearchServer {
 public:
     template <typename StringContainer>
@@ -48,6 +41,7 @@ public:
                                                                         int document_id) const;
     int GetDocumentId(int index) const;
 
+    const std::map<std::string, double> INVALID_MAP_WORD_TO_FREQ;
     const std::map<std::string, double>& GetWordFrequencies(int document_id) const;
     
     void RemoveDocument(int document_id); 

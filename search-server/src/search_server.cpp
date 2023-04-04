@@ -165,14 +165,14 @@ const map<string, double>& SearchServer::GetWordFrequencies(int document_id) con
     {
         return doc_to_words_freeqs_.at(document_id);
     }
-    return {};
+    return INVALID_MAP_WORD_TO_FREQ;
 }
 
 void SearchServer::RemoveDocument(int document_id)
 {
     if (doc_ids_.count(document_id) < 1)
     {
-        throw invalid_argument("Документа с таким id не существует.");
+        return;
     }
 
     for (auto& [word, _] : doc_to_words_freeqs_.at(document_id))

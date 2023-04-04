@@ -1,6 +1,13 @@
 #pragma once
 #include <ostream>
 
+enum class DocumentStatus {
+    ACTUAL,
+    IRRELEVANT,
+    BANNED,
+    REMOVED,
+};
+
 struct Document {
     Document();
     
