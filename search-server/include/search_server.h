@@ -145,13 +145,12 @@ template<typename ExecutionPolicy>
 std::tuple<std::vector<std::string_view>, DocumentStatus> SearchServer::MatchDocument(const ExecutionPolicy& policy,
                                                                        std::string_view raw_query, 
                                                                        int document_id) const {   
-
-    auto words_freqs_it = doc_to_words_freeqs_.find(document_id);
-        
-    if (words_freqs_it == doc_to_words_freeqs_.end()) {
+    if (!doc_ids_.count(document_id)) {
         throw std::out_of_range("Документа с данным id не существует.");
     }
     
+    auto words_freqs_it = doc_to_words_freeqs_.find(document_id);    
+
     const auto& words_freeqs = words_freqs_it->second;
     
     Query query = ParseQuery(raw_query);
