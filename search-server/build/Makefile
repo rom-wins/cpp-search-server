@@ -129,6 +129,30 @@ main/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
 .PHONY : main/fast
 
+src/benchmarks.o: src/benchmarks.cpp.o
+.PHONY : src/benchmarks.o
+
+# target to build an object file
+src/benchmarks.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/benchmarks.cpp.o
+.PHONY : src/benchmarks.cpp.o
+
+src/benchmarks.i: src/benchmarks.cpp.i
+.PHONY : src/benchmarks.i
+
+# target to preprocess a source file
+src/benchmarks.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/benchmarks.cpp.i
+.PHONY : src/benchmarks.cpp.i
+
+src/benchmarks.s: src/benchmarks.cpp.s
+.PHONY : src/benchmarks.s
+
+# target to generate assembly for a file
+src/benchmarks.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/benchmarks.cpp.s
+.PHONY : src/benchmarks.cpp.s
+
 src/document.o: src/document.cpp.o
 .PHONY : src/document.o
 
@@ -176,6 +200,30 @@ src/main.s: src/main.cpp.s
 src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
+
+src/process_queries.o: src/process_queries.cpp.o
+.PHONY : src/process_queries.o
+
+# target to build an object file
+src/process_queries.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/process_queries.cpp.o
+.PHONY : src/process_queries.cpp.o
+
+src/process_queries.i: src/process_queries.cpp.i
+.PHONY : src/process_queries.i
+
+# target to preprocess a source file
+src/process_queries.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/process_queries.cpp.i
+.PHONY : src/process_queries.cpp.i
+
+src/process_queries.s: src/process_queries.cpp.s
+.PHONY : src/process_queries.s
+
+# target to generate assembly for a file
+src/process_queries.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/process_queries.cpp.s
+.PHONY : src/process_queries.cpp.s
 
 src/read_input_functions.o: src/read_input_functions.cpp.o
 .PHONY : src/read_input_functions.o
@@ -330,12 +378,18 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... main"
+	@echo "... src/benchmarks.o"
+	@echo "... src/benchmarks.i"
+	@echo "... src/benchmarks.s"
 	@echo "... src/document.o"
 	@echo "... src/document.i"
 	@echo "... src/document.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/process_queries.o"
+	@echo "... src/process_queries.i"
+	@echo "... src/process_queries.s"
 	@echo "... src/read_input_functions.o"
 	@echo "... src/read_input_functions.i"
 	@echo "... src/read_input_functions.s"

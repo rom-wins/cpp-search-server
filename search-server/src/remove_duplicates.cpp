@@ -36,7 +36,6 @@ void RemoveDuplicates(SearchServer& search_server) {
     }
     for (int doc_id : ids_to_del)
     {
-        cout << "Found duplicate document id "s << doc_id << endl; 
         search_server.RemoveDocument(doc_id);
     }
 }

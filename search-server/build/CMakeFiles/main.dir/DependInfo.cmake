@@ -8,8 +8,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/src/benchmarks.cpp" "CMakeFiles/main.dir/src/benchmarks.cpp.o" "gcc" "CMakeFiles/main.dir/src/benchmarks.cpp.o.d"
   "/home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/src/document.cpp" "CMakeFiles/main.dir/src/document.cpp.o" "gcc" "CMakeFiles/main.dir/src/document.cpp.o.d"
   "/home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/src/main.cpp" "CMakeFiles/main.dir/src/main.cpp.o" "gcc" "CMakeFiles/main.dir/src/main.cpp.o.d"
+  "/home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/src/process_queries.cpp" "CMakeFiles/main.dir/src/process_queries.cpp.o" "gcc" "CMakeFiles/main.dir/src/process_queries.cpp.o.d"
   "/home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/src/read_input_functions.cpp" "CMakeFiles/main.dir/src/read_input_functions.cpp.o" "gcc" "CMakeFiles/main.dir/src/read_input_functions.cpp.o.d"
   "/home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/src/remove_duplicates.cpp" "CMakeFiles/main.dir/src/remove_duplicates.cpp.o" "gcc" "CMakeFiles/main.dir/src/remove_duplicates.cpp.o.d"
   "/home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/src/request_queue.cpp" "CMakeFiles/main.dir/src/request_queue.cpp.o" "gcc" "CMakeFiles/main.dir/src/request_queue.cpp.o.d"

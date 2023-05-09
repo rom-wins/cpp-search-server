@@ -4,7 +4,6 @@
 #include <deque>
 #include "search_server.h"
 
-
 class RequestQueue {
 public:
     explicit RequestQueue(const SearchServer& search_server);
@@ -46,4 +45,5 @@ std::vector<Document> RequestQueue::AddFindRequest(const std::string& raw_query,
 
     return search_result;
 }
+
 

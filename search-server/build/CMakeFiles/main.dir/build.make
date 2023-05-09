@@ -69,10 +69,24 @@ include CMakeFiles/main.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/main.dir/flags.make
 
+CMakeFiles/main.dir/src/benchmarks.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/benchmarks.cpp.o: /home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/src/benchmarks.cpp
+CMakeFiles/main.dir/src/benchmarks.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/main.dir/src/benchmarks.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/benchmarks.cpp.o -MF CMakeFiles/main.dir/src/benchmarks.cpp.o.d -o CMakeFiles/main.dir/src/benchmarks.cpp.o -c /home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/src/benchmarks.cpp
+
+CMakeFiles/main.dir/src/benchmarks.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/src/benchmarks.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/src/benchmarks.cpp > CMakeFiles/main.dir/src/benchmarks.cpp.i
+
+CMakeFiles/main.dir/src/benchmarks.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/benchmarks.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/src/benchmarks.cpp -o CMakeFiles/main.dir/src/benchmarks.cpp.s
+
 CMakeFiles/main.dir/src/document.cpp.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/src/document.cpp.o: /home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/src/document.cpp
 CMakeFiles/main.dir/src/document.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/main.dir/src/document.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/main.dir/src/document.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/document.cpp.o -MF CMakeFiles/main.dir/src/document.cpp.o.d -o CMakeFiles/main.dir/src/document.cpp.o -c /home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/src/document.cpp
 
 CMakeFiles/main.dir/src/document.cpp.i: cmake_force
@@ -86,7 +100,7 @@ CMakeFiles/main.dir/src/document.cpp.s: cmake_force
 CMakeFiles/main.dir/src/main.cpp.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/src/main.cpp.o: /home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/src/main.cpp
 CMakeFiles/main.dir/src/main.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/main.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/main.dir/src/main.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/main.cpp.o -MF CMakeFiles/main.dir/src/main.cpp.o.d -o CMakeFiles/main.dir/src/main.cpp.o -c /home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/src/main.cpp
 
 CMakeFiles/main.dir/src/main.cpp.i: cmake_force
@@ -97,10 +111,24 @@ CMakeFiles/main.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/src/main.cpp -o CMakeFiles/main.dir/src/main.cpp.s
 
+CMakeFiles/main.dir/src/process_queries.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/process_queries.cpp.o: /home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/src/process_queries.cpp
+CMakeFiles/main.dir/src/process_queries.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/main.dir/src/process_queries.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/process_queries.cpp.o -MF CMakeFiles/main.dir/src/process_queries.cpp.o.d -o CMakeFiles/main.dir/src/process_queries.cpp.o -c /home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/src/process_queries.cpp
+
+CMakeFiles/main.dir/src/process_queries.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/src/process_queries.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/src/process_queries.cpp > CMakeFiles/main.dir/src/process_queries.cpp.i
+
+CMakeFiles/main.dir/src/process_queries.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/process_queries.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/src/process_queries.cpp -o CMakeFiles/main.dir/src/process_queries.cpp.s
+
 CMakeFiles/main.dir/src/read_input_functions.cpp.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/src/read_input_functions.cpp.o: /home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/src/read_input_functions.cpp
 CMakeFiles/main.dir/src/read_input_functions.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/main.dir/src/read_input_functions.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/main.dir/src/read_input_functions.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/read_input_functions.cpp.o -MF CMakeFiles/main.dir/src/read_input_functions.cpp.o.d -o CMakeFiles/main.dir/src/read_input_functions.cpp.o -c /home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/src/read_input_functions.cpp
 
 CMakeFiles/main.dir/src/read_input_functions.cpp.i: cmake_force
@@ -114,7 +142,7 @@ CMakeFiles/main.dir/src/read_input_functions.cpp.s: cmake_force
 CMakeFiles/main.dir/src/remove_duplicates.cpp.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/src/remove_duplicates.cpp.o: /home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/src/remove_duplicates.cpp
 CMakeFiles/main.dir/src/remove_duplicates.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/main.dir/src/remove_duplicates.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/main.dir/src/remove_duplicates.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/remove_duplicates.cpp.o -MF CMakeFiles/main.dir/src/remove_duplicates.cpp.o.d -o CMakeFiles/main.dir/src/remove_duplicates.cpp.o -c /home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/src/remove_duplicates.cpp
 
 CMakeFiles/main.dir/src/remove_duplicates.cpp.i: cmake_force
@@ -128,7 +156,7 @@ CMakeFiles/main.dir/src/remove_duplicates.cpp.s: cmake_force
 CMakeFiles/main.dir/src/request_queue.cpp.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/src/request_queue.cpp.o: /home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/src/request_queue.cpp
 CMakeFiles/main.dir/src/request_queue.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/main.dir/src/request_queue.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/main.dir/src/request_queue.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/request_queue.cpp.o -MF CMakeFiles/main.dir/src/request_queue.cpp.o.d -o CMakeFiles/main.dir/src/request_queue.cpp.o -c /home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/src/request_queue.cpp
 
 CMakeFiles/main.dir/src/request_queue.cpp.i: cmake_force
@@ -142,7 +170,7 @@ CMakeFiles/main.dir/src/request_queue.cpp.s: cmake_force
 CMakeFiles/main.dir/src/search_server.cpp.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/src/search_server.cpp.o: /home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/src/search_server.cpp
 CMakeFiles/main.dir/src/search_server.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/main.dir/src/search_server.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/main.dir/src/search_server.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/search_server.cpp.o -MF CMakeFiles/main.dir/src/search_server.cpp.o.d -o CMakeFiles/main.dir/src/search_server.cpp.o -c /home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/src/search_server.cpp
 
 CMakeFiles/main.dir/src/search_server.cpp.i: cmake_force
@@ -156,7 +184,7 @@ CMakeFiles/main.dir/src/search_server.cpp.s: cmake_force
 CMakeFiles/main.dir/src/string_processing.cpp.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/src/string_processing.cpp.o: /home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/src/string_processing.cpp
 CMakeFiles/main.dir/src/string_processing.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/main.dir/src/string_processing.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/main.dir/src/string_processing.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/string_processing.cpp.o -MF CMakeFiles/main.dir/src/string_processing.cpp.o.d -o CMakeFiles/main.dir/src/string_processing.cpp.o -c /home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/src/string_processing.cpp
 
 CMakeFiles/main.dir/src/string_processing.cpp.i: cmake_force
@@ -170,7 +198,7 @@ CMakeFiles/main.dir/src/string_processing.cpp.s: cmake_force
 CMakeFiles/main.dir/src/test_example_functions.cpp.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/src/test_example_functions.cpp.o: /home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/src/test_example_functions.cpp
 CMakeFiles/main.dir/src/test_example_functions.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/main.dir/src/test_example_functions.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/main.dir/src/test_example_functions.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/test_example_functions.cpp.o -MF CMakeFiles/main.dir/src/test_example_functions.cpp.o.d -o CMakeFiles/main.dir/src/test_example_functions.cpp.o -c /home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/src/test_example_functions.cpp
 
 CMakeFiles/main.dir/src/test_example_functions.cpp.i: cmake_force
@@ -183,8 +211,10 @@ CMakeFiles/main.dir/src/test_example_functions.cpp.s: cmake_force
 
 # Object files for target main
 main_OBJECTS = \
+"CMakeFiles/main.dir/src/benchmarks.cpp.o" \
 "CMakeFiles/main.dir/src/document.cpp.o" \
 "CMakeFiles/main.dir/src/main.cpp.o" \
+"CMakeFiles/main.dir/src/process_queries.cpp.o" \
 "CMakeFiles/main.dir/src/read_input_functions.cpp.o" \
 "CMakeFiles/main.dir/src/remove_duplicates.cpp.o" \
 "CMakeFiles/main.dir/src/request_queue.cpp.o" \
@@ -195,8 +225,10 @@ main_OBJECTS = \
 # External object files for target main
 main_EXTERNAL_OBJECTS =
 
+main: CMakeFiles/main.dir/src/benchmarks.cpp.o
 main: CMakeFiles/main.dir/src/document.cpp.o
 main: CMakeFiles/main.dir/src/main.cpp.o
+main: CMakeFiles/main.dir/src/process_queries.cpp.o
 main: CMakeFiles/main.dir/src/read_input_functions.cpp.o
 main: CMakeFiles/main.dir/src/remove_duplicates.cpp.o
 main: CMakeFiles/main.dir/src/request_queue.cpp.o
@@ -204,8 +236,9 @@ main: CMakeFiles/main.dir/src/search_server.cpp.o
 main: CMakeFiles/main.dir/src/string_processing.cpp.o
 main: CMakeFiles/main.dir/src/test_example_functions.cpp.o
 main: CMakeFiles/main.dir/build.make
+main: /usr/local/lib/libtbb.so
 main: CMakeFiles/main.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/romwins/code/yandex_prac/git_projects/cpp-search-server/search-server/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable main"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/main.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

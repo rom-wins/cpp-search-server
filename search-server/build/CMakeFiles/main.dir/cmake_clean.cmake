@@ -1,8 +1,12 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/main.dir/src/benchmarks.cpp.o"
+  "CMakeFiles/main.dir/src/benchmarks.cpp.o.d"
   "CMakeFiles/main.dir/src/document.cpp.o"
   "CMakeFiles/main.dir/src/document.cpp.o.d"
   "CMakeFiles/main.dir/src/main.cpp.o"
   "CMakeFiles/main.dir/src/main.cpp.o.d"
+  "CMakeFiles/main.dir/src/process_queries.cpp.o"
+  "CMakeFiles/main.dir/src/process_queries.cpp.o.d"
   "CMakeFiles/main.dir/src/read_input_functions.cpp.o"
   "CMakeFiles/main.dir/src/read_input_functions.cpp.o.d"
   "CMakeFiles/main.dir/src/remove_duplicates.cpp.o"
